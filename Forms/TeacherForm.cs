@@ -15,95 +15,82 @@ namespace QLDSV.Forms
 {
     public partial class TeacherForm : Form
     {
-        string subject_id;
+        int teacherId;
 
-        public TeacherForm(string sid)
+        public TeacherForm(int userId)
         {
             InitializeComponent();
-            subject_id = sid;
-            LoadData();
+            teacherId = TeacherService.GetTeacherId(userId);
+            LoadGroup();
+            LoadStudents(Convert.ToInt32(cbGroup.SelectedValue));
         }
-        void LoadData()
+        //bắt đầu load form
+        private void TeacherForm_Load(object sender, EventArgs e)
         {
-            var conn = DB.GetConnection();
-            conn.Open();
+            //load tên giáo viên
+            string name = TeacherService.GetTeacherName(teacherId);
+            textBox1.Text = name;
+            //load môn học của giáo viên
+            string subject = TeacherService.GetSubject(teacherId);
+            textBox2.Text = subject;
 
-            string query = @"
-            SELECT g.id, s.mssv, s.name, sub.name AS subject, g.score
-            FROM students s
-            LEFT JOIN grades g 
-                ON s.mssv = g.mssv AND g.subject_id = @sid
-            JOIN subjects sub ON sub.id = @sid
-            ";
-
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@sid", subject_id);
-
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            dataGridView.DataSource = dt;
-
-            conn.Close();
         }
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void LoadGroup()
         {
-            var conn = DB.GetConnection();
-            conn.Open();
-
-            if (selectedId == -1)
-            {
-                // INSERT
-                string insert = "INSERT INTO grades(mssv, subject_id, score) VALUES (@m,@s,@sc)";
-                MySqlCommand cmd = new MySqlCommand(insert, conn);
-
-                cmd.Parameters.AddWithValue("@m", txtMSSV.Text);
-                cmd.Parameters.AddWithValue("@s", subject_id);
-                cmd.Parameters.AddWithValue("@sc", txtScore.Text);
-
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Thêm thành công!");
-            }
-            else
-            {
-                // UPDATE
-                string update = "UPDATE grades SET score=@sc WHERE id=@id";
-                MySqlCommand cmd = new MySqlCommand(update, conn);
-
-                cmd.Parameters.AddWithValue("@sc", txtScore.Text);
-                cmd.Parameters.AddWithValue("@id", selectedId);
-
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Cập nhật thành công!");
-            }
-
-            conn.Close();
-
-            selectedId = -1;
-            LoadData();
+            var dt = TeacherService.GetGroups(teacherId);
+            cbGroup.DisplayMember = "id";
+            cbGroup.ValueMember = "id";
+            cbGroup.DataSource = dt;
         }
-        int selectedId = -1;
-
-        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        void LoadStudents(int groupId)
         {
-            if (e.RowIndex >= 0)
-            {
-                var row = dataGridView.Rows[e.RowIndex];
+            var dt = TeacherService.GetStudents(groupId);
 
-                if (row.Cells["id"].Value != DBNull.Value)
+            dgvDiem.DataSource = dt;
+        }
+
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvDiem.Rows)
+            {
+                if (row.IsNewRow) continue;
+                int studentId = Convert.ToInt32(row.Cells["StudentID"].Value);
+                int sgId = Convert.ToInt32(row.Cells["GroupID"].Value);
+                object val = row.Cells["score"].Value;
+
+                double score = 0;
+                if (val != null && val != DBNull.Value && val.ToString() != "")
                 {
-                    selectedId = Convert.ToInt32(row.Cells["id"].Value);
+                    score = Convert.ToDouble(val);
                 }
-                else
-                {
-                    selectedId = -1; // chưa có điểm → insert
-                }
-                txtMSSV.Text = row.Cells["mssv"].Value.ToString();
-                txtName.Text = row.Cells["name"].Value.ToString();
-                txtScore.Text = row.Cells["score"].Value.ToString();
+                TeacherDB.SaveGrade(studentId, sgId, score);
             }
+            MessageBox.Show("Grades saved successfully!");
         }
 
+        private void cbGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadStudents(Convert.ToInt32(cbGroup.SelectedValue));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LoginForm login = new LoginForm();
+            login.Show();
+
+            this.Close();
+        }
+
+        private void TeacherForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LoginForm login = new LoginForm();
+            login.Show();
+        }
     }
 }

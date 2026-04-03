@@ -19,45 +19,27 @@ namespace QLDSV.Forms
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var conn = DB.GetConnection();
-            conn.Open();
+            int userId;
+            string role = AuthService.Login(txtUser.Text, txtPass.Text, out userId);
 
-            string query = "SELECT * FROM users WHERE username=@u AND password=@p";
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@u", txtUsername.Text);
-            cmd.Parameters.AddWithValue("@p", txtPassword.Text);
-
-            var reader = cmd.ExecuteReader();
-
-            if (reader.Read())
+            if (role == null)
             {
-                string role = reader["role"].ToString();
-                string subject_id = reader["subject_id"].ToString();
-
-                if (role == "teacher")
-                {
-                    TeacherForm f = new TeacherForm(subject_id);
-                    f.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Admin chưa làm 😏");
-                }
-
-                this.Hide();
+                MessageBox.Show("Sai tài khoản");
+                return;
             }
-            else
-            {
-                MessageBox.Show("Sai tài khoản!");
-            }
+            else if (role == "teacher")
+                new TeacherForm(userId).Show();
+ //           else
+ //               new AdminForm().Show();
 
-            conn.Close();
+            this.Hide();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            StudentForm f = new StudentForm();
+            SearchForm f = new SearchForm();
             f.Show();
+            this.Hide();
         }
     }
 }

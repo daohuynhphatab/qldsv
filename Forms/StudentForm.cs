@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using QLDSV.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,40 +13,39 @@ namespace QLDSV.Forms
 {
     public partial class StudentForm : Form
     {
-        public StudentForm()
+        string StudentId;
+        public StudentForm(string IdSearch)
         {
             InitializeComponent();
+            StudentId = IdSearch;
         }
-        private void btnSearch_Click(object sender, EventArgs e)
+
+        //load form thông tin sinh viên
+        private void StudentForm_Load(object sender, EventArgs e)
         {
-            var conn = DB.GetConnection();
-            conn.Open();
 
-            string query = @"
-            SELECT 
-                s.mssv,
-                s.name,
-                IFNULL(GROUP_CONCAT(CONCAT(sub.name, ': ', g.score) SEPARATOR ' | '),'Chưa có điểm') AS subjects
-            FROM students s
-            LEFT JOIN grades g ON s.mssv = g.mssv
-            LEFT JOIN subjects sub ON g.subject_id = sub.id
-            WHERE s.mssv = @m
-            GROUP BY s.mssv, s.name
-            ";
+            // Hiển thị thông tin sinh viên lên form
+            label8.Text = StudentId;
 
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@m", txtMSSV.Text);
+            string name = StudentService.GetStudentName(StudentId);
+            label9.Text = name;
 
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            string classes = StudentService.GetStudentClass(StudentId);
+            label10.Text = classes;
 
-            dataGridView1.DataSource = dt;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.Columns["subjects"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            conn.Close();
+            // Hiển thị điểm sinh viên lên textbox tương ứng
+            Score s = StudentService.GetGrades(StudentId);
+
+            textBox1.Text = s.LTQL.ToString();
+            textBox2.Text = s.CSDL.ToString();
+            textBox3.Text = s.MMT.ToString();
+            textBox4.Text = s.Average.ToString("0.00");
         }
 
-
+        private void StudentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SearchForm search = new SearchForm();
+            search.Show();
+        }
     }
 }

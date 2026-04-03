@@ -30,8 +30,8 @@ namespace QLDSV.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            txtUsername = new TextBox();
-            txtPassword = new TextBox();
+            txtUser = new TextBox();
+            txtPass = new TextBox();
             btnLogin = new Button();
             label1 = new Label();
             label2 = new Label();
@@ -39,19 +39,19 @@ namespace QLDSV.Forms
             linkLabel1 = new LinkLabel();
             SuspendLayout();
             // 
-            // txtUsername
+            // txtUser
             // 
-            txtUsername.Location = new Point(148, 50);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(100, 23);
-            txtUsername.TabIndex = 0;
+            txtUser.Location = new Point(148, 50);
+            txtUser.Name = "txtUser";
+            txtUser.Size = new Size(100, 23);
+            txtUser.TabIndex = 0;
             // 
-            // txtPassword
+            // txtPass
             // 
-            txtPassword.Location = new Point(148, 79);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(100, 23);
-            txtPassword.TabIndex = 1;
+            txtPass.Location = new Point(148, 79);
+            txtPass.Name = "txtPass";
+            txtPass.Size = new Size(100, 23);
+            txtPass.TabIndex = 1;
             // 
             // btnLogin
             // 
@@ -110,8 +110,8 @@ namespace QLDSV.Forms
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnLogin);
-            Controls.Add(txtPassword);
-            Controls.Add(txtUsername);
+            Controls.Add(txtPass);
+            Controls.Add(txtUser);
             Name = "LoginForm";
             Text = "Đăng nhập người dùng";
             ResumeLayout(false);
@@ -120,8 +120,8 @@ namespace QLDSV.Forms
 
         #endregion
 
-        private TextBox txtUsername;
-        private TextBox txtPassword;
+        private TextBox txtUser;
+        private TextBox txtPass;
         private Button btnLogin;
         private Label label1;
         private Label label2;

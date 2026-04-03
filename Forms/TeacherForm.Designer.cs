@@ -33,112 +33,155 @@ namespace QLDSV.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
-            dataGridView = new DataGridView();
-            panel2 = new Panel();
+            panel4 = new Panel();
             label3 = new Label();
-            txtName = new TextBox();
+            button2 = new Button();
+            btnSave = new Button();
+            cbGroup = new ComboBox();
+            panel3 = new Panel();
+            textBox2 = new TextBox();
             label2 = new Label();
+            textBox1 = new TextBox();
             label1 = new Label();
-            btnAdd = new Button();
-            txtMSSV = new TextBox();
-            txtScore = new TextBox();
+            panel2 = new Panel();
+            dgvDiem = new DataGridView();
+            teacherDBBindingSource = new BindingSource(components);
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            panel4.SuspendLayout();
+            panel3.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDiem).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)teacherDBBindingSource).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView);
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 106);
+            panel1.Controls.Add(panel4);
+            panel1.Controls.Add(panel3);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 344);
+            panel1.Size = new Size(159, 450);
             panel1.TabIndex = 0;
             // 
-            // dataGridView
+            // panel4
             // 
-            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Dock = DockStyle.Fill;
-            dataGridView.Location = new Point(0, 0);
-            dataGridView.Name = "dataGridView";
-            dataGridView.Size = new Size(800, 344);
-            dataGridView.TabIndex = 0;
-            dataGridView.CellClick += dataGridView_CellClick;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(txtName);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(btnAdd);
-            panel2.Controls.Add(txtMSSV);
-            panel2.Controls.Add(txtScore);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(800, 100);
-            panel2.TabIndex = 1;
+            panel4.Controls.Add(label3);
+            panel4.Controls.Add(button2);
+            panel4.Controls.Add(btnSave);
+            panel4.Controls.Add(cbGroup);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(0, 186);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(159, 264);
+            panel4.TabIndex = 1;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(367, 49);
+            label3.Location = new Point(28, 30);
             label3.Name = "label3";
-            label3.Size = new Size(25, 15);
-            label3.TabIndex = 6;
-            label3.Text = "Ten";
+            label3.Size = new Size(92, 15);
+            label3.TabIndex = 3;
+            label3.Text = "Nhóm môn học";
             // 
-            // txtName
+            // button2
             // 
-            txtName.Location = new Point(430, 41);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(100, 23);
-            txtName.TabIndex = 5;
+            button2.Location = new Point(34, 199);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 2;
+            button2.Text = "Đăng xuất";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(31, 114);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(89, 23);
+            btnSave.TabIndex = 1;
+            btnSave.Text = "Lưu thay đổi";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
+            // cbGroup
+            // 
+            cbGroup.FormattingEnabled = true;
+            cbGroup.Location = new Point(12, 48);
+            cbGroup.Name = "cbGroup";
+            cbGroup.Size = new Size(121, 23);
+            cbGroup.TabIndex = 0;
+            cbGroup.SelectedIndexChanged += cbGroup_SelectedIndexChanged;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(textBox2);
+            panel3.Controls.Add(label2);
+            panel3.Controls.Add(textBox1);
+            panel3.Controls.Add(label1);
+            panel3.Cursor = Cursors.SizeNS;
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(159, 186);
+            panel3.TabIndex = 0;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(23, 98);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(367, 78);
+            label2.Location = new Point(34, 80);
             label2.Name = "label2";
-            label2.Size = new Size(35, 15);
-            label2.TabIndex = 4;
-            label2.Text = "Diem";
+            label2.Size = new Size(86, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Môn phụ trách";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(23, 41);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(367, 20);
+            label1.Location = new Point(34, 23);
             label1.Name = "label1";
-            label1.Size = new Size(37, 15);
-            label1.TabIndex = 3;
-            label1.Text = "MSSV";
+            label1.Size = new Size(73, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Chào mừng ";
             // 
-            // btnAdd
+            // panel2
             // 
-            btnAdd.Location = new Point(703, 69);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(85, 22);
-            btnAdd.TabIndex = 2;
-            btnAdd.Text = "Lưu thay đổi";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
+            panel2.Controls.Add(dgvDiem);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(159, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(641, 450);
+            panel2.TabIndex = 1;
             // 
-            // txtMSSV
+            // dgvDiem
             // 
-            txtMSSV.Location = new Point(430, 12);
-            txtMSSV.Name = "txtMSSV";
-            txtMSSV.Size = new Size(100, 23);
-            txtMSSV.TabIndex = 1;
+            dgvDiem.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDiem.Dock = DockStyle.Fill;
+            dgvDiem.Location = new Point(0, 0);
+            dgvDiem.Name = "dgvDiem";
+            dgvDiem.Size = new Size(641, 450);
+            dgvDiem.TabIndex = 0;
             // 
-            // txtScore
+            // teacherDBBindingSource
             // 
-            txtScore.Location = new Point(430, 70);
-            txtScore.Name = "txtScore";
-            txtScore.Size = new Size(100, 23);
-            txtScore.TabIndex = 0;
+            teacherDBBindingSource.DataSource = typeof(TeacherDB);
             // 
             // TeacherForm
             // 
@@ -149,24 +192,35 @@ namespace QLDSV.Forms
             Controls.Add(panel1);
             Name = "TeacherForm";
             Text = "Quản Lý Điểm Sinh Viên";
+            FormClosing += TeacherForm_FormClosing;
+            Load += TeacherForm_Load;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDiem).EndInit();
+            ((System.ComponentModel.ISupportInitialize)teacherDBBindingSource).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private DataGridView dataGridView;
+        private Panel panel4;
+        private Panel panel3;
         private Panel panel2;
-        private Button btnAdd;
-        private TextBox txtMSSV;
-        private TextBox txtScore;
+        private Button button2;
+        private Button btnSave;
+        private ComboBox cbGroup;
         private Label label2;
+        private TextBox textBox1;
         private Label label1;
+        private BindingSource teacherDBBindingSource;
+        private DataGridView dgvDiem;
+        private TextBox textBox2;
         private Label label3;
-        private TextBox txtName;
     }
+
 }
