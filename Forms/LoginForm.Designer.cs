@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 
 namespace QLDSV.Forms
 {
@@ -10,9 +10,8 @@ namespace QLDSV.Forms
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up any resources being being disposed; otherwise, false.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -32,7 +31,7 @@ namespace QLDSV.Forms
         {
             txtUser = new TextBox();
             txtPass = new TextBox();
-            btnLogin = new Button();
+            btnLogin = new QLDSV.Utils.RoundedButton();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -41,26 +40,34 @@ namespace QLDSV.Forms
             // 
             // txtUser
             // 
-            txtUser.Location = new Point(148, 50);
+            txtUser.Location = new Point(159, 42);
             txtUser.Name = "txtUser";
-            txtUser.Size = new Size(100, 23);
+            txtUser.Size = new Size(160, 25);
             txtUser.TabIndex = 0;
             // 
             // txtPass
             // 
-            txtPass.Location = new Point(148, 79);
+            txtPass.Location = new Point(159, 79);
             txtPass.Name = "txtPass";
-            txtPass.Size = new Size(100, 23);
+            txtPass.PasswordChar = '*';
+            txtPass.Size = new Size(160, 25);
             txtPass.TabIndex = 1;
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(160, 108);
+            btnLogin.BackColor = Color.FromArgb(74, 144, 226); // Softer Blue
+            btnLogin.BorderRadius = 20;
+            btnLogin.Cursor = Cursors.Hand;
+            btnLogin.FlatAppearance.BorderSize = 0;
+            btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnLogin.ForeColor = Color.White;
+            btnLogin.Location = new Point(159, 116);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(75, 23);
+            btnLogin.Size = new Size(160, 40);
             btnLogin.TabIndex = 2;
-            btnLogin.Text = "Đăng Nhập";
-            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Text = "🔑 Đăng Nhập";
+            btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
             // label1
@@ -68,33 +75,33 @@ namespace QLDSV.Forms
             label1.AutoSize = true;
             label1.Location = new Point(88, 58);
             label1.Name = "label1";
-            label1.Size = new Size(0, 15);
+            label1.Size = new Size(0, 19);
             label1.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(57, 58);
+            label2.Location = new Point(48, 45);
             label2.Name = "label2";
-            label2.Size = new Size(88, 15);
+            label2.Size = new Size(103, 19);
             label2.TabIndex = 4;
             label2.Text = "Tên đăng nhập:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(85, 87);
+            label3.Location = new Point(81, 82);
             label3.Name = "label3";
-            label3.Size = new Size(60, 15);
+            label3.Size = new Size(70, 19);
             label3.TabIndex = 5;
             label3.Text = "Mật khẩu:";
             // 
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(160, 153);
+            linkLabel1.Location = new Point(159, 160);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(75, 15);
+            linkLabel1.Size = new Size(88, 19);
             linkLabel1.TabIndex = 6;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Tra cứu điểm";
@@ -102,8 +109,9 @@ namespace QLDSV.Forms
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(386, 212);
             Controls.Add(linkLabel1);
             Controls.Add(label3);
@@ -112,7 +120,9 @@ namespace QLDSV.Forms
             Controls.Add(btnLogin);
             Controls.Add(txtPass);
             Controls.Add(txtUser);
+            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập người dùng";
             ResumeLayout(false);
             PerformLayout();
@@ -122,7 +132,7 @@ namespace QLDSV.Forms
 
         private TextBox txtUser;
         private TextBox txtPass;
-        private Button btnLogin;
+        private QLDSV.Utils.RoundedButton btnLogin;
         private Label label1;
         private Label label2;
         private Label label3;

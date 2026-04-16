@@ -1,17 +1,24 @@
-﻿public class AuthService
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using QLDSV.Models;
+
+public class AuthService
 {
-    public static string Login(string username, string password, out int userId)
+    public string Login(string username, string password, out int userId)
     {
         userId = -1;
 
-        var reader = UserDB.Login(username, password);
-
-        if (reader.Read())
+        using (var context = new QldsvContext())
         {
-            userId = Convert.ToInt32(reader["id"]);
-            return reader["role"].ToString();
-        }
+            var user = context.Users
+                .FirstOrDefault(u => u.Username == username && u.Password == password);
 
-        return null;
+            if (user != null)
+            {
+                userId = user.Id;
+                return user.Role;
+            }
+
+            return null;
+        }
     }
 }

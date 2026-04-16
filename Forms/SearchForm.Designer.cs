@@ -1,4 +1,4 @@
-﻿namespace QLDSV.Forms
+namespace QLDSV.Forms
 {
     partial class SearchForm
     {
@@ -29,45 +29,55 @@
         private void InitializeComponent()
         {
             txtStudentId = new TextBox();
-            btnSearch = new Button();
+            btnSearch = new QLDSV.Utils.RoundedButton();
             label1 = new Label();
             SuspendLayout();
             // 
             // txtStudentId
             // 
-            txtStudentId.Location = new Point(96, 74);
+            txtStudentId.Location = new Point(85, 80);
             txtStudentId.Name = "txtStudentId";
-            txtStudentId.Size = new Size(100, 23);
+            txtStudentId.Size = new Size(180, 25);
             txtStudentId.TabIndex = 0;
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(96, 103);
+            btnSearch.BackColor = Color.FromArgb(74, 144, 226); // Softer Blue
+            btnSearch.BorderRadius = 20;
+            btnSearch.Cursor = Cursors.Hand;
+            btnSearch.FlatAppearance.BorderSize = 0;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(85, 120);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(100, 25);
+            btnSearch.Size = new Size(180, 40);
             btnSearch.TabIndex = 1;
-            btnSearch.Text = "Tra cứu";
-            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Text = "🔍 Tra cứu";
+            btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(93, 56);
+            label1.Location = new Point(81, 55);
             label1.Name = "label1";
-            label1.Size = new Size(106, 15);
+            label1.Size = new Size(125, 19);
             label1.TabIndex = 3;
-            label1.Text = "Nhập mã sinh viên";
+            label1.Text = "Nhập mã sinh viên:";
             // 
             // SearchForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(298, 200);
+            BackColor = Color.White;
+            ClientSize = new Size(350, 220);
             Controls.Add(label1);
             Controls.Add(btnSearch);
             Controls.Add(txtStudentId);
+            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "SearchForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Tra cứu điểm sinh viên";
             FormClosing += SearchForm_FormClosing;
             Load += SearchForm_Load;
@@ -78,7 +88,7 @@
         #endregion
 
         private TextBox txtStudentId;
-        private Button btnSearch;
+        private QLDSV.Utils.RoundedButton btnSearch;
         private Label label1;
     }
 }

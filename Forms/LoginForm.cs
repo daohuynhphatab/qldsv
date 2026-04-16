@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,20 +19,29 @@ namespace QLDSV.Forms
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            AuthService auth = new AuthService();
+
             int userId;
-            string role = AuthService.Login(txtUser.Text, txtPass.Text, out userId);
+            var role = auth.Login(txtUser.Text, txtPass.Text, out userId);
 
-            if (role == null)
+            if (role != null)
             {
-                MessageBox.Show("Sai tài khoản");
-                return;
+                if (role == "admin")
+                {
+                    AdminForm f = new AdminForm();
+                    f.Show();
+                }
+                else
+                {
+                    TeacherForm f = new TeacherForm(userId);
+                    f.Show();
+                }
+                this.Hide();
             }
-            else if (role == "teacher")
-                new TeacherForm(userId).Show();
- //           else
- //               new AdminForm().Show();
-
-            this.Hide();
+            else
+            {
+                MessageBox.Show("Sai tài khoản hoặc mật khẩu");
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

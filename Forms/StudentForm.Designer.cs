@@ -1,4 +1,4 @@
-﻿namespace QLDSV.Forms
+namespace QLDSV.Forms
 {
     partial class StudentForm
     {
@@ -38,8 +38,8 @@
             label4 = new Label();
             textBox1 = new TextBox();
             panel1 = new Panel();
-            button2 = new Button();
-            button1 = new Button();
+            button2 = new QLDSV.Utils.RoundedButton();
+            button1 = new QLDSV.Utils.RoundedButton();
             panel2 = new Panel();
             groupBox1 = new GroupBox();
             label10 = new Label();
@@ -84,21 +84,21 @@
             // 
             textBox4.Location = new Point(453, 25);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(144, 23);
+            textBox4.Size = new Size(144, 25);
             textBox4.TabIndex = 7;
             // 
             // textBox3
             // 
             textBox3.Location = new Point(303, 25);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(144, 23);
+            textBox3.Size = new Size(144, 25);
             textBox3.TabIndex = 6;
             // 
             // textBox2
             // 
             textBox2.Location = new Point(153, 25);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(144, 23);
+            textBox2.Size = new Size(144, 25);
             textBox2.TabIndex = 5;
             // 
             // label1
@@ -106,7 +106,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(93, 15);
+            label1.Size = new Size(109, 19);
             label1.TabIndex = 0;
             label1.Text = "Lập trình quản lí";
             // 
@@ -115,7 +115,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(153, 0);
             label2.Name = "label2";
-            label2.Size = new Size(76, 15);
+            label2.Size = new Size(89, 19);
             label2.TabIndex = 1;
             label2.Text = "Cơ sở dữ liệu";
             // 
@@ -124,7 +124,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(303, 0);
             label3.Name = "label3";
-            label3.Size = new Size(88, 15);
+            label3.Size = new Size(103, 19);
             label3.TabIndex = 2;
             label3.Text = "Mạng máy tính";
             // 
@@ -133,7 +133,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(453, 0);
             label4.Name = "label4";
-            label4.Size = new Size(94, 15);
+            label4.Size = new Size(110, 19);
             label4.TabIndex = 3;
             label4.Text = "Điểm trung bình";
             // 
@@ -141,7 +141,7 @@
             // 
             textBox1.Location = new Point(3, 25);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(144, 23);
+            textBox1.Size = new Size(144, 25);
             textBox1.TabIndex = 4;
             // 
             // panel1
@@ -156,21 +156,35 @@
             // 
             // button2
             // 
-            button2.Location = new Point(138, 24);
+            button2.BackColor = Color.FromArgb(239, 83, 80);
+            button2.BorderRadius = 20;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(138, 12);
             button2.Name = "button2";
-            button2.Size = new Size(103, 23);
+            button2.Size = new Size(160, 40);
             button2.TabIndex = 1;
-            button2.Text = "Khiếu nại điểm";
-            button2.UseVisualStyleBackColor = true;
+            button2.Text = "⚖️ Khiếu nại điểm";
+            button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
-            button1.Location = new Point(354, 24);
+            button1.BackColor = Color.FromArgb(74, 144, 226);
+            button1.BorderRadius = 20;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(320, 12);
             button1.Name = "button1";
-            button1.Size = new Size(103, 23);
+            button1.Size = new Size(160, 40);
             button1.TabIndex = 0;
-            button1.Text = "In bảng điểm";
-            button1.UseVisualStyleBackColor = true;
+            button1.Text = "🖨️ In bảng điểm";
+            button1.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -201,7 +215,7 @@
             label10.AutoSize = true;
             label10.Location = new Point(137, 83);
             label10.Name = "label10";
-            label10.Size = new Size(44, 15);
+            label10.Size = new Size(53, 19);
             label10.TabIndex = 5;
             label10.Text = "label10";
             // 
@@ -210,7 +224,7 @@
             label9.AutoSize = true;
             label9.Location = new Point(137, 56);
             label9.Name = "label9";
-            label9.Size = new Size(38, 15);
+            label9.Size = new Size(45, 19);
             label9.TabIndex = 4;
             label9.Text = "label9";
             // 
@@ -219,7 +233,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(137, 29);
             label8.Name = "label8";
-            label8.Size = new Size(38, 15);
+            label8.Size = new Size(45, 19);
             label8.TabIndex = 3;
             label8.Text = "label8";
             // 
@@ -228,7 +242,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(83, 83);
             label7.Name = "label7";
-            label7.Size = new Size(33, 15);
+            label7.Size = new Size(39, 19);
             label7.TabIndex = 2;
             label7.Text = "Lớp :";
             // 
@@ -237,7 +251,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(51, 56);
             label6.Name = "label6";
-            label6.Size = new Size(65, 15);
+            label6.Size = new Size(77, 19);
             label6.TabIndex = 1;
             label6.Text = "Họ và Tên :";
             // 
@@ -246,7 +260,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(21, 29);
             label5.Name = "label5";
-            label5.Size = new Size(95, 15);
+            label5.Size = new Size(112, 19);
             label5.TabIndex = 0;
             label5.Text = "Mã số sinh viên :";
             // 
@@ -261,14 +275,17 @@
             // 
             // StudentForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(602, 270);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Font = new Font("Segoe UI", 10F);
             Name = "StudentForm";
-            Text = "StudentForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Quản lý điểm sinh viên";
             FormClosing += StudentForm_FormClosing;
             Load += StudentForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
@@ -295,8 +312,8 @@
         private Label label7;
         private Label label6;
         private Label label5;
-        private Button button2;
-        private Button button1;
+        private QLDSV.Utils.RoundedButton button2;
+        private QLDSV.Utils.RoundedButton button1;
         private Label label10;
         private Label label9;
         private Label label8;

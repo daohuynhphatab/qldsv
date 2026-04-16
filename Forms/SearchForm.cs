@@ -17,6 +17,8 @@ namespace QLDSV.Forms
         public SearchForm()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
         }
         // Tìm kiếm sinh viên theo mã sinh viên rồi hiển thị form thông tin sinh viên
         private void btnSearch_Click(object sender, EventArgs e)
